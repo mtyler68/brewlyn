@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:define name="subheader">
+    ABV Alcohol by Volume
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- Left Column -->
+    <div class="Container70 Responsive100">
+
+      <!-- Section 1 -->
+      <div class="Container50">
+        <div class="ContainerIndent">
+          <div class="Card ShadowEffect HeiAutoOnMobile" style="min-height:275px;">
+            <h:form>
+              <p:focus for="og"/>
+              <p:panelGrid columns="2" layout="grid" styleClass="FormContent" style="border: 0px;margin-bottom:10px">
+                <p:outputLabel value="Gravity Units"/>
+                <p:selectOneRadio layout="pageDirection" value="#{abvCaclController.calc.gravityUnit}">
+                  <f:selectItem itemLabel="SG (1.xxx)" itemValue="SPECIFIC_GRAVITY"/>
+                  <f:selectItem itemLabel="Plato &deg;P" itemValue="PLATO"/>
+                </p:selectOneRadio>
+
+                <p:outputLabel id="og" value="Original Gravity (OG)"/>
+                <p:inputText size="10" value="#{abvCaclController.calc.originalGravity}">
+                  <p:ajax event="keyup" update="abv aa calories" listener="#{abvCaclController.calculate()}"/>
+                </p:inputText>
+
+                <p:outputLabel value="Final Gravity (FG)"/>
+                <p:inputText size="10" value="#{abvCaclController.calc.finalGravity}">
+                  <p:ajax event="keyup" update="abv aa calories" listener="#{abvCaclController.calculate()}"/>
+                </p:inputText>
+
+                <p:outputLabel value="Equation"/>
+                <p:selectOneRadio layout="pageDirection" value="#{abvCaclController.calc.equation}">
+                  <f:selectItem itemLabel="Standard" itemValue="STANDARD"/>
+                  <f:selectItem itemLabel="Alternate" itemValue="ALTERNATE"/>
+                </p:selectOneRadio>
+              </p:panelGrid>  
+              <div class="TexAlCenter"><p:commandButton value="Update" action="#{abvCaclController.calculate()}" update="abv aa calories"/></div>
+              <div class="Separator"></div>
+
+              <p:panelGrid columns="2" layout="grid" styleClass="FormContent" style="border: 0px;margin-bottom:10px">
+                <p:outputLabel value="Alcohol by Volume"/>
+                <h:outputFormat id="abv" value="{0,number,#.##}%">
+                  <f:param value="#{abvCaclController.calc.alcoholByVolume}"/>
+                </h:outputFormat>
+                
+                <p:outputLabel value="Apparent Attenuation"/>
+                <h:outputFormat id="aa" value="{0,number,percent}">
+                  <f:param value="#{abvCaclController.calc.apparentAttenuation}"/>
+                </h:outputFormat>
+                
+                <p:outputLabel value="Calories"/>
+                <h:outputFormat id="calories" value="{0,number,#.#} per 12oz bottle">
+                  <f:param value="#{abvCaclController.calc.caloriesPer12Oz}"/>
+                </h:outputFormat>
+              </p:panelGrid>
+            </h:form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="Container30 Responsive100">
+
+      <!-- Section 1 -->
+      <ui:include src="/WEB-INF/fragments/calculators.xhtml"/>
+    </div>
+  </ui:define>
+
+</ui:composition>

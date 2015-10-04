@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+  <h:head>
+    <f:facet name="first">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+    </f:facet>
+    <title>Brewlyn - Page Not Found</title>
+    <ui:insert name="head" />
+  </h:head>
+
+  <h:body styleClass="GrayModena Geometry" style="height:auto;">
+
+    <div class="Wid90 DispBlock MarAuto MarTopPerc10 TexAlCenter">
+      <div class="Wid40 MarAuto WidAutoOnMobile">
+        <div class="EmptyBox30"></div>
+        <div class="Card ShadowEffect">
+          <div class="EmptyBox20"></div>
+          <div class="Wid100 OvHidden Fs30 Orange">Register for Brewlyn</div>
+          <div class="Wid100 OvHidden Fs20 BoldGray">Please provide the following information<br/>to start your free account</div>
+          <div class="EmptyBox20"></div>
+          <p:messages id="messages" for="email"/>
+          <h:form>
+            <div class="TexAlLeft">
+              <h:panelGrid columns="3" cellpadding="5">
+                <h:outputLabel value="First Name"/>
+                <p:inputText id="firstName" placeholder="i.e. John" value="#{registerController.firstName}" required="true"
+                             label="First Name"/>
+                <p:message display="text" for="firstName"/>
+                
+                <h:outputLabel value="Last Name"/>
+                <p:inputText id="lastName" placeholder="i.e. Smith" required="true" value="#{registerController.lastName}"
+                             label="Last Name"/>
+                <p:message display="text" for="lastName"/>
+                
+                <h:outputLabel value="Email"/>
+                <p:inputText id="email" placeholder="i.e. you@example.com" required="true" value="#{registerController.email}"
+                             label="Email"/>
+                <p:message display="text" for="email" id="emailMsg"/>
+                
+                <h:outputLabel value="Password"/>
+                <p:password id="password" match="pwd2" feedback="true" required="true" value="#{registerController.password}"
+                            label="Password"/>
+                <p:message display="text" for="password"/>
+                
+                <h:outputLabel value="Confirm Password"/>
+                <p:password id="pwd2" required="true"
+                            label="Confirm Password"/>
+                <p:message display="text" for="pwd2"/>
+              </h:panelGrid>
+            </div>
+
+            <div class="Separator"></div>
+            <div class="EmptyBox10"></div>
+            <div class="Wid100">
+              <p:commandButton value="Submit" icon="fa fa-pencil-square-o" styleClass="OrangeButton Fs18 White RaisedButton" action="#{registerController.register()}" ajax="false"/>
+              <p:link value="  Cancel" outcome="/dashboard"/>
+            </div>
+          </h:form>
+          <div class="EmptyBox20"></div>
+        </div>
+        <div class="Wid100 TexAlCenter MarTop20 Fs14 FontRobotoRegular Gray">
+          <i class="fa fa-copyright"></i>  2015 Brewlyn <br/> All rights reserved.
+        </div>
+      </div>
+    </div>
+
+    <h:outputStylesheet name="css/core-layout.css" library="modena-layout" />
+    <h:outputStylesheet name="css/animate.css" library="modena-layout" />
+    <h:outputStylesheet name="css/modena-font.css" library="modena-layout" />
+    <h:outputStylesheet name="css/ripple-effect.css" library="modena-layout" />
+    <h:outputStylesheet name="css/font-awesome.css" library="modena-layout" />
+    <h:outputStylesheet name="css/modena-layout.css" library="modena-layout" />
+  </h:body>
+
+</html>

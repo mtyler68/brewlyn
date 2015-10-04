@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+  <ui:define name="subheader">
+    Dashboard
+  </ui:define>
+
+  <ui:define name="content">
+    <!-- Left Column -->
+    <div class="Container70 Responsive100">
+
+      <!-- Section 1 -->
+      <div class="Container100">
+        <div class="ContainerIndent">
+          <div class="Card ShadowEffect HeiAutoOnMobile" style="min-height:275px;">
+            <h1 class="CardTopic TexAlLeft">News</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="Container30 Responsive100">
+
+      <!-- Section 1 -->
+      <ui:include src="/WEB-INF/fragments/calculators.xhtml"/>
+    </div>
+  </ui:define>
+
+</ui:composition>
