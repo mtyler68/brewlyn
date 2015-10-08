@@ -35,6 +35,9 @@ public class Hop {
     @XmlElement(name = "NOTES", required = true)
     protected String notes;
 
+    @XmlElement(name = "SUBSTITUTES", required = false)
+    protected String substitutes;
+
     @XmlElement(name = "TYPE", required = true)
     protected String type;
 
@@ -55,6 +58,5 @@ public class Hop {
 
     @XmlElement(name = "DISPLAY_TIME", required = true)
     protected String displaytime;
-
 
 }

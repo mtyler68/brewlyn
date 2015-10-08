@@ -10,7 +10,9 @@
         <h:form id="menuform">
             <pm:menu>
                 <p:menuitem id="rm_dashboard" value="Dashboard" icon="icon-dvr" outcome="/dashboard"/>
-                
+                <p:submenu id="rm_ingredients" label="Ingredients">
+                  <p:menuitem id="hops" value="Hops" icon="" outcome="pretty:hops"/>
+                </p:submenu>
                 <p:separator />
             </pm:menu>
         </h:form>

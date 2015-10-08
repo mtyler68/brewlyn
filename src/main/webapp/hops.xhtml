@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="subheader">
+        Hops
+    </ui:define>
+    
+    <ui:define name="content">
+        
+        <div class="Container100">
+            <div class="ContainerIndent">
+                <div class="Card ShadowEffect TexAlCenter">
+                    <br/>
+                    <p:dataTable var="_hop" value="#{globalHops}" stickyHeader="true">
+                      <p:column headerText="Name">
+                        <h:outputText value="#{_hop.name}"/>
+                      </p:column>
+                      <p:column headerText="Alpha Acid">
+                        <h:outputText value="#{_hop.alpha}%"/>
+                      </p:column>
+                      <p:column headerText="Type">
+                        <h:outputText value="#{_hop.type}"/>
+                      </p:column>
+                      <p:column headerText="Use">
+                        <h:outputText value="#{_hop.use}"/>
+                      </p:column>
+                      <p:column headerText="Origin">
+                        <h:outputText value="#{_hop.origin}"/>
+                      </p:column>
+                      <p:column headerText="Notes">
+                        <h:outputText value="#{_hop.notes}"/>
+                      </p:column>
+                      <p:column headerText="Substitutes">
+                        <h:outputText value="#{_hop.substitutes}"/>
+                      </p:column>
+                    </p:dataTable>
+                    <br/><br/>
+                </div>
+            </div>
+        </div>
+        
+    </ui:define>
+
+</ui:composition>
