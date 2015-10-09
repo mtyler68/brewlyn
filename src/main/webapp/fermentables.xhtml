@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+  <ui:define name="subheader">
+    Fermentables
+  </ui:define>
+
+  <ui:define name="content">
+
+    <div class="Container100">
+      <div class="ContainerIndent">
+        <div class="Card ShadowEffect TexAlCenter">
+          <br/>
+          <h:form>
+            <p:dataTable var="_fermentable" value="#{globalFermentables}" stickyHeader="true"
+                         widgetVar="fermentablesTable" filteredValue="#{globalFermentablesController.filteredFermentables}">
+              <p:column headerText="Name">
+                <h:outputText value="#{_fermentable.name}"/>
+              </p:column>
+              <p:column headerText="Type" filterBy="#{_fermentable.type}" filterMatchMode="exact">
+                <f:facet name="filter">
+                  <p:selectOneMenu onchange="PF('fermentablesTable').filter()">
+                    <f:selectItem itemLabel="Select one" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{fermentableTypes}"/>
+                  </p:selectOneMenu>
+                </f:facet>
+                <h:outputText value="#{_fermentable.type}"/>
+              </p:column>
+              
+              <p:column headerText="Origin" filterBy="#{_fermentable.origin}" filterMatchMode="exact">
+                <f:facet name="filter">
+                  <p:selectOneMenu onchange="PF('fermentablesTable').filter()">
+                    <f:selectItem itemLabel="Select one" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{fermentableOrigins}"/>
+                  </p:selectOneMenu>
+                </f:facet>
+                <h:outputText value="#{_fermentable.origin}"/>
+              </p:column>
+              
+              <p:column headerText="Color">
+                <h:outputText value="#{_fermentable.color} °L"/>
+              </p:column>
+            </p:dataTable>
+          </h:form>
+          <br/><br/>
+        </div>
+      </div>
+    </div>
+
+  </ui:define>
+
+</ui:composition>

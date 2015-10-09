@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+  <ui:define name="subheader">
+    Style Browser
+  </ui:define>
+
+  <ui:define name="content">
+    <ui:decorate template="/WEB-INF/templates/pagecontainer.xhtml">
+      <ui:define name="content">
+        <br/>
+        <h:form>
+          <div class="Container20 Responsive50">
+            <div class="ContainerIndent">
+              <h2 class="BigTopic">Categories</h2>
+              <div class="TexAlLeft">
+
+                <p:selectOneListbox id="categoriesList" value="#{styleBrowserController.currentCategory}"
+                                    filter="true" filterMatchMode="contains" style="width:270px;">
+                  <p:ajax listener="#{styleBrowserController.onCategoryChange}" update="styleList"/>
+                  <f:selectItems value="#{styleBrowserController.categories}" var="_category"/>
+                  <p:column>
+                    <h:outputText value="#{_category}"/>
+                  </p:column>
+                </p:selectOneListbox>
+              </div>
+            </div>
+          </div>
+          <div class="Container20 Responsive50">
+            <div class="ContainerIndent">
+              <h2 class="BigTopic">Styles</h2>
+              <div class="TexAlLeft">
+                <p:selectOneListbox id="styleList" value="#{styleBrowserController.currentStyle}" style="width:270px;">
+                  <f:selectItems value="#{styleBrowserController.styles}" var="_style"/>
+                  <p:column>
+                    <h:outputText value="#{_style}"/>
+                  </p:column>
+                </p:selectOneListbox>
+
+              </div>
+            </div>
+          </div>
+        </h:form>
+      </ui:define>
+    </ui:decorate>
+
+  </ui:define>
+
+</ui:composition>
